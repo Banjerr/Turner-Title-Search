@@ -5,7 +5,7 @@
   "projects": {
     "turner-title-search": {
       "root": "",
-      "sourceRoot": "src/client",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},

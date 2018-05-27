@@ -1,0 +1,38 @@
+.awards ul {
+  padding: 0;
+  list-style: none;
+}
+
+.awards ul li {
+  margin: 0 0 4%;
+  padding: 2% 0;
+  border-bottom: 1px solid #333;
+}
+
+.awards ul li ul li {
+    border-bottom: none;
+}
+
+.participants ul {
+    padding: 0;
+    margin: 0 0 1%;
+}
+
+.participants ul li, .awards ul li {
+    transition: all .2s ease;
+}
+
+.participants ul li:hover, .awards ul li:hover {
+    background: darkgray;
+}
+
+.titleList {
+    padding: 0;
+    list-style: none;
+}
+
+.titleList li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2% 1%;
+}

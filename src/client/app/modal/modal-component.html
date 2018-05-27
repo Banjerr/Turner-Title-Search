@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{TitleName}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+    <p *ngIf="Storylines.length" class="description">{{Storylines[0].Description}}</p>
+  
+    <section *ngIf="Participants.length" class="participants">
+        <button type="button" class="btn btn-primary" (click)="particpiantsIsCollapsed = !particpiantsIsCollapsed" [attr.aria-expanded]="!particpiantsIsCollapsed" aria-controls="collapseBasic">Show Participants
+        </button>
+        <hr>
+        <div id="collapseBasic" [collapse]="particpiantsIsCollapsed" class="card card-block card-header">
+            <ul>
+                <li *ngFor="let p of Participants">
+                    <span class="float-left mr25"><strong>{{p.Name}}</strong></span>
+                    <span class="float-right ml25">{{p.RoleType}}</span>
+                </li>
+            </ul>
+        </div>
+        <hr>
+    </section>
+
+    <section *ngIf="Awards.length" class="awards">
+        <button type="button" class="btn btn-primary" (click)="awardsIsCollapsed = !awardsIsCollapsed" [attr.aria-expanded]="!awardsIsCollapsed" aria-controls="collapseBasic">Show Awards
+        </button>
+        <hr>
+        <div id="collapseBasic" [collapse]="awardsIsCollapsed" class="card card-block card-header">
+            <ul>
+                <li *ngFor="let a of Awards">
+                    <section class="clearfix">
+                        <span><strong>Award: </strong></span>                        
+                        <span>{{a.Award}}</span>                        
+                    </section>                                        
+                    <section class="clearFix">
+                        <span><strong>Award Company: </strong></span>                        
+                        <span>{{a.AwardCompany}}</span>
+                    </section>
+                    <ul *ngIf="a.Participants">
+                        <li *ngFor="let part of a.Participants">
+                            <span>{{part}} - </span>
+                            <span>{{a.AwardWon ? 'Won in ' + a.AwardYear : 'Nominated in ' + a.AwardYear}}</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <hr>
+    </section>
+</div>

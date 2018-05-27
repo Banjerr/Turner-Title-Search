@@ -20,8 +20,8 @@ function initApp(database) {
 app.get('/title', (req, res) => {
     db.collection('Titles').find({}).toArray((err, docs) => {
         if (err) throw err;
-        console.log('docs is ', docs);
-        res.send(docs);
+
+        res.json(docs);
     });
 });
 
@@ -36,8 +36,8 @@ app.get('/title/:titleName', (req, res) => {
 
   db.collection('Titles').find(query).toArray((err, docs) => {
     if (err) throw err;
-    console.log('docs is ', typeof docs);
-    res.send(docs);
+
+    res.json(docs);
   });
 });
 

@@ -1,0 +1,7 @@
+<ul class="titleList">
+  <li *ngFor="let title of returnedTitles" (click)="openTitleModal(title)">
+    <button type="button" class="btn btn-primary" tooltip="Released: {{title.ReleaseYear}}">
+      {{title.TitleName}}
+    </button>    
+  </li>
+</ul>
