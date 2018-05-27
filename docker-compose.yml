@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    build: ./src/client
+    ports:
+      - 80:4200
+    volumes:
+      - ./src/client:/home/app/client
+      - /home/app/client/node_modules
+      - ./src/client/assets:/home/app/client/assets
+    restart: always
+
+  server:
+    build: ./src/server
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src/server:/home/server
+      - /home/server/node_modules
+    restart: always

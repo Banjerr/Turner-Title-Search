@@ -24,7 +24,7 @@ class AppComponent {
 
   public requestTitles = (title) => {
     this.isSearching = true;
-    this.http.get('/title/' + title).subscribe(data => {
+    this.http.get('http://localhost:3000/title/' + title).subscribe(data => {
       this.returnedTitles = data;
       this.isSearching = false;
     });
@@ -32,7 +32,7 @@ class AppComponent {
 
   ngOnInit() {
     this.isSearching = true;
-    this.http.get('/title/').subscribe(data => {      
+    this.http.get('http://localhost:3000/title/').subscribe(data => {      
       this.returnedTitles = data;
       this.returnedTitles.map((t) => this.titleArray.push(t.TitleName));
       this.isSearching = false;

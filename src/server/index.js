@@ -6,6 +6,11 @@ const MongoClient = require('mongodb').MongoClient;
 
 let db;
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
+
 const MONGO_URI = "mongodb://readonly:turner@ds043348.mongolab.com:43348/dev-challenge";
 
 const options = {
@@ -38,7 +43,6 @@ app.get('/title/:titleName', (req, res) => {
     res.json(docs);
   });
 });
-
 
 (() => {
     return MongoClient.connect(MONGO_URI, options).then(client => initApp(client.db()));
