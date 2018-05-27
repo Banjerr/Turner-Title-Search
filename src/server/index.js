@@ -29,10 +29,8 @@ app.get('/title/:titleName', (req, res) => {
   var titleToSearch = req.params.titleName;
 
   var query = {
-    'TitleName': new RegExp(titleToSearch, 'i')
+    'TitleName': titleToSearch
   };
-
-  console.log(query);
 
   db.collection('Titles').find(query).toArray((err, docs) => {
     if (err) throw err;
