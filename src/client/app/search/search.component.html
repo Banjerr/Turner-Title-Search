@@ -3,7 +3,9 @@
     <span class="input-group-text">Search For: </span>
   </div>
 
-<input type="text" (keyup)="refine_title_search($event)" class="form-control" aria-label="Movie Title" />
+<input type="text" [typeahead]="titleArray" [(ngModel)]="movieTitle" lass="form-control" aria-label="Movie Title" />
+
+<button class="btn btn-success" (click)="refine_title_search()"><i class=" fa fa-plus "></i></button>
 
 
 </div>

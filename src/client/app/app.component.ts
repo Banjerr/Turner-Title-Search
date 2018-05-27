@@ -9,27 +9,33 @@ import { HttpClient } from '@angular/common/http';
 class AppComponent {
   title = 'Turner Title Search';
   returnedTitles: any;
-  modalRef: BsModalRef; 
+  modalRef: BsModalRef;
+  titleArray = [];
+  isSearching = false;
 
   constructor(private modalService: BsModalService, private http: HttpClient) {} 
 
   public openModal(data: object) {
     let initialState = data;
-    console.log(initialState);
     this.modalRef = this.modalService.show(ModalContentComponent, {initialState});
   }
 
   public closeModal = () => this.modalRef.hide();
 
   public requestTitles = (title) => {
+    this.isSearching = true;
     this.http.get('/title/' + title).subscribe(data => {
       this.returnedTitles = data;
+      this.isSearching = false;
     });
   }
 
   ngOnInit() {
-    this.http.get('/title/').subscribe(data => {
+    this.isSearching = true;
+    this.http.get('/title/').subscribe(data => {      
       this.returnedTitles = data;
+      this.returnedTitles.map((t) => this.titleArray.push(t.TitleName));
+      this.isSearching = false;
     });
   }
 }

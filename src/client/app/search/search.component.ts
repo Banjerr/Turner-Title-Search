@@ -6,18 +6,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  @Input() currentSearchString: string;
+  @Input() titleArray: any[];
   @Output() onValueChanged: EventEmitter<any> = new EventEmitter<any>();
-  public searchFor;
+  searchFor;
+  movieTitle: string;
 
-  refine_title_search = (event: any) => {
-    let newVal = event.target.value;
-    
-    setTimeout(() => {
-      if (newVal === this.currentSearchString) return;
-      console.log(newVal);
-      this.onValueChanged.emit(newVal);
-    }, 1000)    
+  refine_title_search = () => {
+    let newVal = this.movieTitle;
+    this.onValueChanged.emit(newVal);
   }
 
   constructor() {
